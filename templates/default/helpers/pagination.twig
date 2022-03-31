@@ -1,0 +1,39 @@
+{% if total > 1 %}
+
+    <div class="pagination">
+
+        {% if page > 1 and page <= total %}
+            <a class="prev" rel="prev" href="{{ url(route, url_params|merge({page: page - 1 == 1 ? null : page - 1})) }}">Previous</a>
+        {% endif %}
+
+        {% if page <= (range / 2) %}
+
+            {% set from = 1 %}
+            {% set to = range %}
+
+        {% elseif page - (range / 2) > 0 %}
+
+            {% set from = page - (range / 2) %}
+            {% set to = (page - 1) + (range / 2) %}
+
+            {% if to > total %}
+                {% set from = total - (range / 2) %}
+                {% set to = total %}
+            {% endif %}
+
+        {% endif %}
+
+            {% for i in range(from, to) %}
+                {% if page == i %}
+                    <b class="current">{{ i }}</b>
+                {% else %}
+                    <a href="{{ url(route, url_params|merge({page: i == 1 ? null : i})) }}">{{ i }}</a>
+                {% endif %}
+            {% endfor %}
+
+        {% if page < total %}<a class="next" rel="next" href="{{ url(route, url_params|merge({page: page + 1})) }}">Next</a>{% endif %}
+
+    </div>
+    <div style="clear: both"></div>
+
+{% endif %}

@@ -1,0 +1,7 @@
+<h1 class="title">{{ video.tags.block.title|evaluate }}</h1>
+
+{% if video.tags.docs %}
+    {{ list.tags(video.tags.docs) }}
+{% else %}
+    <div class="info">{{ video.tags.block.text.not_found }}</div>
+{% endif %}

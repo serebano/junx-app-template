@@ -1,0 +1,306 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding: 40px;
+    font-size: 13px;
+    background: #ffffff;
+}
+
+a {
+    color: #1E347B;
+    text-decoration: none;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.wrapper {
+    width: 970px;
+    margin: 0 auto;
+}
+
+header {
+    padding: 0 0 20px 0;
+    margin: 0 0 0 0;
+}
+
+footer {
+    border-top: 1px solid #aaa;
+    padding: 10px 0 0 0;
+    margin: 30px 0 0 0;
+}
+
+.logo {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    font-size: 28px;
+    height: 40px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 100;
+    margin: 0 0 12px 0;
+    padding: 0px;
+    color: #333333;
+}
+
+.title b {
+    font-weight: 400;
+}
+
+.info {
+    padding: 15px;
+    font-size: 13px;
+    background: #f4f4f4;
+    color: #333333;
+    border: 1px solid #eeeeee;
+    margin: 10px 0;
+}
+
+.search {
+    float: right;
+}
+
+/*menu*/
+
+/*header menu*/
+header ul.menu {
+    text-align: left;
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #333333;
+}
+header ul.menu li {
+    background: #333333;
+    font-size: 13px;
+    display: inline-block;
+    margin: 0px;
+    position: relative;
+    padding: 0;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+header ul.menu li a {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+    color: #ffffff;
+}
+
+header ul.menu li:hover {
+    background: #555;
+    color: #fff;
+}
+
+header ul.menu li:hover a {
+    color: #ffffff;
+}
+
+header ul.menu li ul {
+    padding: 0;
+    z-index: 999999;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 150px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transiton: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    -ms-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s;
+    -transition: opacity 0.2s;
+}
+header ul.menu li ul li {
+    background: #555;
+    display: block;
+    color: #fff;
+    text-shadow: 0 -1px 0 #000;
+}
+header ul.menu li ul li a {
+    color: #ffffff;
+}
+header ul.menu li ul li:hover { background: #666; }
+header ul.menu li:hover ul {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+header ul.menu li.menu-right {
+    float: right;
+}
+
+/*footer menu*/
+footer ul.menu {
+    text-align: left;
+    display: block;
+    margin: 10px 0;
+    padding: 0;
+    list-style: none;
+}
+footer ul.menu li {
+    font-size: 11px;
+    display: inline-block;
+    margin: 0px;
+    position: relative;
+    padding: 0;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+footer ul.menu li a {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 15px;
+    color: #444444;
+}
+
+footer ul.menu li:hover {
+    background: #eee;
+}
+
+footer ul.menu li:hover a {
+}
+
+/*menu*/
+
+.pagination {
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+.pagination a {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    background: #f4f4f4;
+    border: 1px solid #f0f0f0;
+    margin: 0 1px 0 0;
+    padding: 0 8px;
+    color: #444444;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background: #eeeeee;
+    border: 1px solid #dddddd;
+}
+
+.pagination b {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    background: #eeeeee;
+    border: 1px solid #dddddd;
+    margin: 0 1px 0 0;
+    padding: 0 8px;
+    font-weight: bold;
+    color: #444444;
+}
+
+.thumbs-grid {
+    margin: 0px;
+    padding: 0px;
+}
+
+.thumbs-grid li {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 0 10px 20px 0;
+    padding: 0px;
+    width: 120px;
+}
+
+.thumbs-grid li div {
+    height: 55px;
+}
+
+.thumbs-grid li div span {
+    font-size: 11px;
+    color: #555555;
+}
+
+.thumbs-grid li div p {
+    height: 45px;
+    line-height: 15px;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+.thumbs-list {
+    margin: 0px;
+    padding: 0px;
+}
+
+.thumbs-list li {
+    display: block;
+    vertical-align: top;
+    margin: 5px;
+    padding: 0px;
+}
+
+section#body {
+    width: 800px;
+    float: right;
+}
+
+section#left-side {
+    width: 170px;
+    float: left;
+}
+
+section#left-side div.inner {
+    margin-right: 10px;
+}
+
+section#right-side {
+    width: 170px;
+    float: right;
+}
+
+section#right-side div.inner {
+    margin-left: 10px;
+}
+
+section#player {
+    width: 640px;
+    float: left;
+}
+
+section#ads {
+    width: 300px;
+    float: right;
+}
+
+section#related {
+    clear: both;
+    padding-top: 30px;
+}

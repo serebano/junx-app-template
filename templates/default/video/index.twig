@@ -1,0 +1,18 @@
+<h1 class="title">{{ video.index.block.title|evaluate }}</h1>
+{% if video.index.block.text.search_results %}
+    <p>{{ video.index.block.text.search_results|evaluate }}</p>
+{% endif %}
+
+{% if video.index.pagination and video.index.pagination.position.top %}
+    {% include 'helpers/pagination.twig' with video.index.pagination only %}
+{% endif %}
+
+{% if video.index.docs %}
+    {{ list.grid(video.index.docs) }}
+{% else %}
+    <div class="info">{{ video.index.block.text.not_found|evaluate }}</div>
+{% endif %}
+
+{% if video.index.pagination and video.index.pagination.position.bottom %}
+    {% include 'helpers/pagination.twig' with video.index.pagination only %}
+{% endif %}

@@ -1,0 +1,336 @@
+{
+    "/home": {
+        "route": "index",
+        "blocks": {
+            "left-side": {
+                "active": 1,
+                "wrapper": {"class": "inner"},
+                "blocks": {
+                    "categories": {
+                        "controller": "video/tags",
+                        "active": 1,
+                        "title": "Categories",
+                        "cache": {
+                            "ttl": 3600
+                        },
+                        "params": {
+                            "size": 50,
+                            "sort": {"app.$index.c": "desc"}
+                        },
+                        "text": {
+                            "not_found": "No Categories Found!"
+                        }
+                    },
+                    "ads": {
+                        "controller": "ads/get",
+                        "active": 1,
+                        "params": {
+                            "size": "160x600"
+                        }
+                    }
+                }
+            },
+            "body": {
+                "active": 1,
+                "blocks": {
+                    "new-videos": {
+                        "controller": "video/index",
+                        "active": 1,
+                        "title": "New Videos",
+                        "params": {
+                            "size": 18,
+                            "sort": {"added": "desc"},
+                            "pagination": {
+                                "route": "video/index",
+                                "position": {"bottom": 1},
+                                "active": 1,
+                                "range": 10,
+                                "max_pages": 100
+                            }
+                        },
+                        "text": {
+                            "not_found": "No videos found"
+                        }
+                    },
+                    "ads": {
+                        "controller": "ads/get",
+                        "active": 1,
+                        "params": {
+                            "size": "728x90"
+                        },
+                        "wrapper": {
+                            "style": "margin: 15px 0"
+                        }
+                    },
+                    "beign-watched": {
+                        "controller": "video/index",
+                        "active": 1,
+                        "title": "Beign Watched",
+                        "params": {
+                            "size": 18,
+                            "sort": {"added": "asc"}
+                        },
+                        "text": {
+                            "not_found": "No videos found"
+                        }
+                    }
+                }
+            }
+        },
+        "meta": {
+            "title": "Welcome to {{ app.name }}"
+        },
+        "menu": {
+            "header": {
+                "active": 1,
+                "label": "{{ app.name }}"
+            }
+        }
+    },
+    "/videos/[i:page]?": {
+        "route": "video/index",
+        "title": "New Video",
+        "menu": {
+            "header": {
+                "active": 1,
+                "label": "Fresh Videos"
+            },
+            "footer": {
+                "active": 1,
+                "label": "Latest Video Updates"
+            }
+        },
+        "meta": {
+            "title": "New Videos - {{ app.name }}",
+            "name": {
+                "description": "This is videos list page."
+            }
+        },
+        "blocks": {
+            "left-side": {
+                "active": 1,
+                "wrapper": {"class": "inner"},
+                "blocks": {
+                    "tags": {
+                        "controller": "video/tags",
+                        "title": "Categories",
+                        "params": {
+                            "size": 30,
+                            "sort": {"app.$index.c": "desc"}
+                        }
+                    },
+                    "ads": {
+                        "controller": "ads/get",
+                        "params": {"size": "160x600"},
+                        "active": 1
+                    }
+                }
+            },
+            "body": {
+                "active": 1,
+                "blocks": {
+                    "videos": {
+                        "controller": "video/index",
+                        "active": 1,
+                        "title": "New Videos ({{ video.index.total }})",
+                        "params": {
+                            "size": 50,
+                            "sort": {"added": "desc"},
+                            "pagination": {
+                                "active": 1,
+                                "position": {"top": 1, "bottom": 1},
+                                "range": 10,
+                                "max_pages": 100
+                            }
+                        },
+                        "text": {
+                            "not_found": "No videos found"
+                        }
+                    }
+                }
+            },
+            "right-side": {
+                "active": 1,
+                "blocks": {
+                    "ads": {
+                        "controller": "ads/get",
+                        "params": {
+                            "size": "300x250"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/video/[:id]": {
+        "route": "video/view",
+        "title": "Watch {{ video.view.video.title }} video.",
+        "meta": {
+            "title": "Watch {{ video.view.video.title }} video - {{ app.name }}",
+            "name": {
+                "description": "Super video about {{ video.view.video.description }}."
+            }
+        },
+        "blocks": {
+            "player": {
+                "active": 1,
+                "blocks": {
+                    "player": {
+                        "controller": "video/view",
+                        "active": 1,
+                        "title": "{{ video.view.video.title }}",
+                        "params": {
+                            "player": {
+                                "size": {
+                                    "width": 655,
+                                    "height": 460
+                                }
+                            }
+                        },
+                        "text": {}
+                    }
+                }
+            },
+            "ads": {
+                "active": 1,
+                "blocks": {
+                    "ads1": {
+                        "controller": "ads/get",
+                        "active": 1,
+                        "params": {
+                            "size": "300x250"
+                        },
+                        "wrapper": {
+                            "style": "margin-bottom:15px"
+                        }
+                    },
+                    "ads2": {
+                        "controller": "ads/get",
+                        "active": 1,
+                        "params": {
+                            "size": "300x250"
+                        }
+                    }
+                }
+            },
+            "related": {
+                "active": 1,
+                "blocks": {
+                    "related-videos": {
+                        "controller": "video/index",
+                        "active": 1,
+                        "title": "Related Videos",
+                        "params": {
+                            "size": 35,
+                            "sort": {"_score": "desc"},
+                            "related_to": "/blocks/player/blocks/player/return/video"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/search/[:page]?": {
+        "route": "video/search",
+        "query_params": {"q": 1},
+        "title": "{{ video.index.query }} - Search Results",
+        "meta": {
+            "title": "{{ video.index.query }} - Search Results - {{ app.name }}",
+            "name": {
+                "description": "Super videos about {{ video.index.query }}. Must see!"
+            }
+        },
+        "blocks": {
+            "right-side": {
+                "active": 1,
+                "wrapper": {"class": "inner"},
+                "blocks": {
+                    "tags": {
+                        "controller": "video/tags",
+                        "active": 1,
+                        "title": "Categories",
+                        "params": {
+                            "size": 50,
+                            "sort": {"app.$index.c": "desc"}
+                        },
+                        "text": {
+                            "not_found": "No Categories Found!"
+                        }
+                    }
+                }
+            },
+            "body": {
+                "active": 1,
+                "wrapper": {"class": "inner"},
+                "blocks": {
+                    "search": {
+                        "controller": "video/index",
+                        "title": "Search results for <b>{{ video.index.query }}</b>",
+                        "active": 1,
+                        "params": {
+                            "size": 36,
+                            "sort": {"_score": "desc"},
+                            "pagination": {
+                                "position": {"top": 1, "bottom": 1},
+                                "active": 1,
+                                "range": 10,
+                                "max_pages": 100
+                            }
+                        },
+                        "text": {
+                            "not_found": "Your search - <b>{{ video.index.query }}</b> - did not match any documents.",
+                            "search_results": "About {{ video.index.total }} results ({{ video.index.took }} sec)"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/tags": {
+        "route": "video/tags",
+        "title": "Tags",
+        "meta": {
+            "title": "Trending Tags - {{ app.name }}",
+            "name": {
+                "description": null
+            }
+        },
+        "menu": {
+            "header": {
+                "active": 1,
+                "label": "Fresh Tags"
+            }
+        },
+        "blocks": {
+            "body-full": {
+                "active": 1,
+                "blocks": {
+                "ads": {
+                    "controller": "ads/get",
+                    "active": 1,
+                    "params": {
+                        "size": "728x90"
+                    },
+                    "wrapper": {
+                        "style": "margin: 10px auto; background:#f4f4f4;text-align:center"
+                    }
+                },
+                "tags": {
+                    "controller": "video/tags",
+                    "active": 1,
+                    "title": "Most Popular Tags",
+                    "params": {
+                        "size": 200,
+                        "sort": {"app.$index.c": "desc"}
+                    },
+                    "text": {
+                        "tags_results": "Browse {{ docs.total }} trending  video tags",
+                        "not_found": "Sorry, no tags found. Try again later."
+                    },
+                    "wrapper": {}
+                }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+{% macro grid(videos) %}
+
+    <ul class="thumbs-grid">
+    {% for video in videos %}
+
+        <li>
+            <a title="{{ route('video/view').title|evaluate }}" href="{{ url('video/view', {id: video.id}) }}"><img src="{{ xthumb(video.thumb) }}" width="120" height="90"></a>
+            <div>
+                <span>{{ time_ago(video.added) }}</span>
+                <p>{{ video.title }}</p>
+            </div>
+        </li>
+
+    {% endfor %}
+    </ul>
+
+{% endmacro %}
+
+{% macro list(videos) %}
+
+    <ul class="thumbs-list">
+        {% for video in videos %}
+
+            <li>
+                <a title="{{ route('video/view').title|evaluate }}" href="{{ url('video/view', {id: video.id}) }}"><img src="{{ xthumb(video.thumb) }}" width="120" height="90"></a>
+                <div>
+                    <p>{{ time_ago(video.added) }}</p>
+                    {{ video.title }}
+                </div>
+            </li>
+
+        {% endfor %}
+    </ul>
+
+{% endmacro %}
+
+{% macro tags(tags) %}
+
+    {% set index = get("/index") %}
+
+    {% for tag in tags %}
+
+        <li><a title="{{ tag.app[index].v|default(tag.query) }}" href="{{ url('video/search', {q: tag.query}) }}">{{ tag.query }}</a></li>
+
+    {% endfor %}
+
+{% endmacro %}

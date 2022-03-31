@@ -1,0 +1,114 @@
+{
+    "settings": {
+        "name": "App Name",
+        "description": "More info about this awesome app.",
+        "template": "default",
+        "aid_range": [1,100],
+        "fakenow": 0,
+        "aftertime": 2592000,
+        "cache_ttl_config": 0,
+        "subdomain": 1,
+        "default_router": "en",
+        "default_router_subdomain": 1,
+        "elasticsearch": {
+            "index": "",
+            "connection": {
+                "hosts": ["api.elast.io"],
+                "connectionParams": {
+                    "auth": ["farm3","7gblkhJSa3","Basic"]
+                }
+            }
+        },
+        "assets": {
+            "css": ["//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css","default"],
+            "js": ["jquery","app"]
+        },
+        "xthumb": {
+            "host": "thumbs.{$domain}",
+            "key": "8nBgl598HB86gblc76",
+            "w": 120,
+            "h": 90,
+            "q": 100,
+            "a": "c",
+            "zc": 1,
+            "f": 0
+        },
+        "ref_query_map": {
+            "q": "alltheweb|aol|ask|ask|bing|google|pornport",
+            "query": "xmobee",
+            "p": "yahoo",
+            "wd": "baidu",
+            "text": "yandex"
+        },
+        "doc": {
+            "type": {
+                "videos": {
+                    "_type": ["videos"],
+                    "search_fields": ["title"],
+                    "map": {
+                        "xid": "xid",
+                        "aid": "aid",
+                        "added": "aftertime",
+                        "thumb": "thumb",
+                        "title": "title",
+                        "tags": "tags",
+                        "categories": "categories"
+                    }
+                },
+                "tags": {
+                    "_type": ["tags"],
+                    "map": {
+                        "xid": "xid",
+                        "aid": "aid",
+                        "query": "query",
+                        "title": "title",
+                        "ref": "ref",
+                        "app": "app"
+                    }
+                }
+            }
+        },
+        "accept_queries": 1,
+        "send_queries": 0
+    },
+    "router": {
+        "en": {
+            "xid": "en",
+            "aid": [1,25,87],
+            "name": "English Site",
+            "title": "",
+            "description": "Some description about this site",
+            "label": "English",
+            "charset": "utf-8",
+            "lang": "en",
+            "meta": {
+                "title": "Main Meta Title - {{ app.name }}",
+                "name": {
+                    "description": "This site is simply awesome! - {{ app.name }}"
+                }
+            },
+            "text": {
+                "select_language": "Language",
+                "btn_search": "Search"
+            },
+            "query_mod": null,
+            "query_operator": "OR",
+            "active": 1
+        },
+        "fr": {
+            "xid": "fr",
+            "aid": [3,12,21],
+            "name": "Français",
+            "title": "",
+            "description": "",
+            "label": "Français",
+            "charset": "utf-8",
+            "lang": "fr",
+            "text": {
+                "select_language": "Language",
+                "btn_search": "Search"
+            },
+            "active": 1
+        }
+    }
+}

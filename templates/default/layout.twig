@@ -1,0 +1,72 @@
+{% import "helpers/list.twig" as list %}
+<!DOCTYPE html>
+<html lang="{{ app.lang }}">
+    <head>
+        <title>{{ app.route.meta.title|evaluate }}</title>
+        <meta http-equiv="Content-Type" content="text/html" charset="{{ app.charset }}">
+        {% for name,content in app.route.meta.name %}
+        <meta name="{{ name }}" content="{{ content|evaluate }}">
+        {% endfor %}
+        {{ assets('css') }}
+    </head>
+    <body>
+
+    <div class="wrapper">
+
+        <header>
+            <h1 class="logo">{{ app.name }}</h1>
+            <form class="search" action="{{ url('video/search') }}">
+                <input type="text" required name="q" value="{{ video.index.query }}">
+                <input type="submit" value="{{ text('btn_search') }}">
+            </form>
+            <ul class="menu">
+                {% for menu in app.menu.header %}
+                <li><a href="{{ url(menu.route) }}">{{ menu.label|evaluate }}</a></li>
+                {% endfor %}
+                <li class="menu-right">
+                    <a>{{ text('select_language') }} - {{ app.label }}</a>
+                    <ul>
+                        {% for router in app.router %}
+                        <li><a title="{{ router.title }}" href="{{ url('index',{xid:router.xid}) }}">{{ router.label }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </header>
+
+        {% block body %}
+        {% for gid,group in blocks %}
+        <section id="{{ gid }}">
+            <div class="{{ group.wrapper.class }}" style="{{ group.wrapper.style }}">
+                {% for block in group.blocks %}
+                <div class="{{ block.wrapper.class }}" style="{{ block.wrapper.style }}">
+                    {% if block.print %}
+                        {{ block.print|raw }}
+                    {% else %}
+                        {% include block.template ~ '.twig' with block.view %}
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endfor %}
+        <div style="clear: both"></div>
+        {% endblock %}
+
+        <footer>
+            {% if app.menu.footer %}
+            <ul class="menu">
+                {% for menu in app.menu.footer %}
+                    <li><a href="{{ url(menu.route) }}">{{ menu.label|evaluate }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <p>{{ app.description }}</p>
+            <p>{{ etime }} sec</p>
+        </footer>
+
+    </div>
+
+    {{ assets('js') }}
+    </body>
+</html>
